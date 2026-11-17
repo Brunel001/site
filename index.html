@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brunel: testing for bots and AI agents</title>
+<meta name="description" content="Independent testing for software bots and AI agents on the business systems they run on.">
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#6b6a65;--line:#e4e1d8;--card:#fff;--accent:#38506b;--bad:#b23a2b;--good:#2f7d4f}
+@media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#a3a29b;--line:#34332f;--card:#1f1f1c;--accent:#9db7d4;--bad:#ec7d6d;--good:#6cc08f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:760px;margin:0 auto;padding:48px 16px 64px}
+.brand{font-weight:700;letter-spacing:.06em;font-size:14px;color:var(--muted);text-transform:uppercase}
+h1{font-size:34px;line-height:1.2;margin:10px 0 14px}
+h2{font-size:20px;margin:40px 0 10px;padding-top:14px;border-top:1px solid var(--line)}
+p{margin:0 0 14px}.lead{font-size:19px;color:var(--muted)}a{color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.num{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}.good{color:var(--good)}.bad{color:var(--bad)}
+.small{font-size:14px;color:var(--muted)}ul{padding-left:20px}li{margin:4px 0}
+.btn{display:inline-block;margin-top:6px;padding:10px 16px;border-radius:8px;background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600}
+footer{margin-top:48px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body><main>
+<div class="brand">Brunel</div>
+<h1>Independent testing for software bots and AI agents.</h1>
+<p class="lead">An agent that says "done" is not the same as a task that is done. We test bots and AI agents on the business systems they actually run on, many times over, and check the result in the system itself.</p>
+
+<h2>First results</h2>
+<p>Two AI agents, 17 everyday tasks in an open-source ERP and helpdesk (Odoo and osTicket), five runs each, every result checked in the database.</p>
+<div class="cards">
+  <div class="card"><div class="small">Claude Sonnet 5.5</div><div class="num good">17 of 17</div><div class="small">tasks right in all 5 runs</div></div>
+  <div class="card"><div class="small">Claude Haiku 5.5</div><div class="num">15 of 17</div><div class="small">tasks right in all 5 runs</div></div>
+  <div class="card"><div class="small">Claude Haiku 5.5</div><div class="num bad">7 runs</div><div class="small">reported a task as done that was still open</div></div>
+</div>
+<p>The failures were all one task: marking a project task as done. The cheaper agent moved it into the Done column instead of setting its status, then reported success. On screen it looked finished; in the database it was still open.</p>
+<p><a class="btn" href="report-v0.html">Read the full report</a></p>
+
+<h2>How we test</h2>
+<ul>
+  <li>Every task runs against a disposable copy of the system, reset to the same starting data before each run.</li>
+  <li>Every task runs several times, because one run can look like success while five show the pattern.</li>
+  <li>Results are checked in the system's database, not judged from screenshots.</li>
+  <li>A person does each task by hand once, so the agent's effort can be compared with a human's.</li>
+</ul>
+<p>The test case format is open: <a href="https://github.com/Brunel001/cases-format">github.com/Brunel001/cases-format</a>.</p>
+
+<h2>Work with us</h2>
+<p>If you build AI agents for businesses, or run bots in production, and want to know how reliable they really are, write to <a href="mailto:hello@brunelconsulting.com">hello@brunelconsulting.com</a>.</p>
+
+<footer>Brunel Consulting · brunelconsulting.com</footer>
+</main></body></html>
